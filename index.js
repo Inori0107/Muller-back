@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import { StatusCodes } from "http-status-codes";
 import mongoSanitize from "express-mongo-sanitize";
-import rateLimit from "express-rate-limit";
+// import rateLimit from "express-rate-limit";
 import routeUser from "./routes/user.js";
 import routeProduct from "./routes/product.js";
 import routeTicket from "./routes/ticket.js";
@@ -14,22 +14,22 @@ import "./passport/passport.js";
 
 const app = express();
 
-app.use(
-	rateLimit({
-		windowMs: 1000 * 60 * 15,
-		max: 100,
-		standardHeaders: "draft-7",
-		legacyHeaders: false,
-		statusCode: StatusCodes.TOO_MANY_REQUESTS,
-		message: "太多請求",
-		handler(req, res, next, options) {
-			res.status(options.statusCode).json({
-				success: false,
-				message: options.message
-			});
-		}
-	})
-);
+// app.use(
+// 	rateLimit({
+// 		windowMs: 1000 * 60 * 15,
+// 		max: 100,
+// 		standardHeaders: "draft-7",
+// 		legacyHeaders: false,
+// 		statusCode: StatusCodes.TOO_MANY_REQUESTS,
+// 		message: "太多請求",
+// 		handler(req, res, next, options) {
+// 			res.status(options.statusCode).json({
+// 				success: false,
+// 				message: options.message
+// 			});
+// 		}
+// 	})
+// );
 
 app.use(
 	cors({
